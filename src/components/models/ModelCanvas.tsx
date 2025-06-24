@@ -9,6 +9,7 @@ import * as THREE from 'three'
 interface Props {
   path: string
   selected: boolean
+  isDarkMode: boolean
 }
 
 export default function ModelCanvas({ path, selected }: Props) {
