@@ -55,7 +55,6 @@ export default function ModelViewer({ name, path, selected, onSelect }: Props) {
   <ModelCanvas
     path={path}
     selected={selected}
-    name={name}
     isDarkMode={isDarkMode}
   />
 </Suspense>
