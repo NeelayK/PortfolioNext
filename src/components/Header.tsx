@@ -31,18 +31,6 @@ export default function Header() {
           Neelay Kamat
         </a>
         <nav className="flex items-center space-x-10">
-          <a
-            href="#about"
-            className="hover:text-highlight dark:hover:text-highlight text-default dark:text-parchment transition-colors cursor-none"
-          >
-            Skills
-          </a>
-          <a
-            href="#experience"
-            className="hover:text-highlight dark:hover:text-highlight text-default dark:text-parchment transition-colors cursor-none"
-          >
-            Projects
-          </a>
           <ThemeToggle />
         </nav>
       </div>
