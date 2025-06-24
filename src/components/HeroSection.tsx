@@ -36,15 +36,16 @@ export default function HeroSection() {
           >
             Learn More
           </Link>
-          <Link
-            href="#experience"
-            className="relative px-6 py-3 border-2 border-highlight text-default dark:bg-muted dark:text-parchment rounded-lg overflow-hidden group transition-colors duration-300"
-          >
-            <span href='#about' className="relative z-10 transition-colors duration-300 group-hover:text-amber-500">
-              My Skills
-            </span>
-            <span className="absolute inset-0 bg-highlight/30 dark:bg-muted/40 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0" />
-          </Link>
+<Link
+  href="#experience"
+  className="relative px-6 py-3 border-2 border-highlight text-default dark:bg-muted dark:text-parchment rounded-lg overflow-hidden group transition-colors duration-300"
+>
+  <span className="relative z-10 transition-colors duration-300 group-hover:text-amber-500">
+    My Skills
+  </span>
+  <span className="absolute inset-0 bg-highlight/30 dark:bg-muted/40 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0" />
+</Link>
+
         </div>
       </div>
 
