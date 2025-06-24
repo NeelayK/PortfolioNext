@@ -22,7 +22,8 @@ export default function AboutSection() {
 
   const [displaySkills, setDisplaySkills] = useState<Skill[]>([])
   const [isFading, setIsFading] = useState(false)
-  const fadeTimeout = useRef<NodeJS.Timeout>()
+  const fadeTimeout = useRef<NodeJS.Timeout | null>(null)
+
 
   useEffect(() => {
     async function fetchSkills() {
