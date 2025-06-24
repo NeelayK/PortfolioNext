@@ -51,14 +51,15 @@ export default function ModelViewer({ name, path, selected, onSelect }: Props) {
       <Canvas shadows camera={{ position: [0, 5, 0], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
-        <Suspense fallback={null}>
-          <ModelCanvas
-            path={path}
-            selected={selected}
-            name={name}
-            isDarkMode={isDarkMode} {/* ✅ FIX: only if ModelCanvas supports this prop */}
-          />
-        </Suspense>
+<Suspense fallback={null}>
+  <ModelCanvas
+    path={path}
+    selected={selected}
+    name={name}
+    isDarkMode={isDarkMode}
+  />
+</Suspense>
+
         <EffectComposer>
           <Bloom
             intensity={selected ? 2.5 : 1.5}
