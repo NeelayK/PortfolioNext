@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useGLTF } from '@react-three/drei'
@@ -12,7 +11,7 @@ interface Props {
   isDarkMode: boolean
 }
 
-export default function ModelCanvas({ path, selected }: Props) {
+export default function ModelCanvas({ path, selected, isDarkMode }: Props) {
   const { scene } = useGLTF(path)
   const ref = useRef<THREE.Object3D>(null)
 
@@ -34,9 +33,9 @@ export default function ModelCanvas({ path, selected }: Props) {
           return new THREE.MeshBasicMaterial({
             color: baseColor,
             transparent: true,
-            opacity: 0.6,               
+            opacity: 0.6,
             blending: THREE.AdditiveBlending,
-            depthWrite: false,         
+            depthWrite: false,
           })
         }
 
@@ -46,17 +45,13 @@ export default function ModelCanvas({ path, selected }: Props) {
             let baseColorHex: string
 
             if (name === 'HoloBase') {
-              baseColorHex = selected ? '#aa3333' : '#ffffff'   
+              baseColorHex = selected ? '#aa3333' : '#ffffff'
             } else if (name === 'HoloGlow') {
-              baseColorHex = selected ? '#220011' : '#444444' 
+              baseColorHex = selected ? '#220011' : '#444444'
             } else {
-              if (mesh.material) {
-                baseColorHex = idx === 0
-                  ? (selected ? '#aa3333' : '#ffffff')
-                  : (selected ? '#220011' : '#444444')
-              } else {
-                baseColorHex = selected ? '#0077ff' : '#f'
-              }
+              baseColorHex = idx === 0
+                ? (selected ? '#aa3333' : '#ffffff')
+                : (selected ? '#220011' : '#444444')
             }
 
             const holoMat = makeHoloMaterial(baseColorHex)
@@ -82,13 +77,12 @@ export default function ModelCanvas({ path, selected }: Props) {
 
   useFrame(({ clock }) => {
     if (ref.current) {
-      // Slow rotation
-      ref.current.rotation.y += 0.003 
+      ref.current.rotation.y += 0.003
 
       const time = clock.getElapsedTime()
       const baseFlicker = 0.5
-      const flickerAmplitude = 0.15   
-      const flickerSpeed = 3     
+      const flickerAmplitude = 0.15
+      const flickerSpeed = 3
       const flicker = baseFlicker + Math.sin(time * flickerSpeed) * flickerAmplitude
 
       ref.current.traverse((child) => {
@@ -112,9 +106,9 @@ export default function ModelCanvas({ path, selected }: Props) {
     <primitive
       object={scene}
       ref={ref}
-      scale={1.8}                      
-      position={[0, -1, 0]}        
-      rotation={[-Math.PI / 2, 0, 0]}  
+      scale={1.8}
+      position={[0, -1, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
     />
   )
 }
