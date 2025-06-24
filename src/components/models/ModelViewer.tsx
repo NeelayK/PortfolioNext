@@ -12,6 +12,7 @@ import {
 import clsx from 'clsx'
 import { KernelSize } from 'postprocessing'
 import { Suspense, useEffect, useState } from 'react'
+import { Vector2 } from 'three'
 import ModelCanvas from './ModelCanvas'
 
 interface Props {
