@@ -2,6 +2,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x:hidden;
 }
 
 * {
@@ -97,6 +98,7 @@ body.dark {
 
 .highlight-name::before {
   content: '';
+  overflow-x:visible;
   position: absolute;
   inset: 0 0 0 0;
   background-color: #c670ff;
