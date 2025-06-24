@@ -1,7 +1,7 @@
 'use client'
 
-import { supabase } from '@/lib/supabaseClient'
 import { useEffect, useRef, useState } from 'react'
+import { supabase } from '@/lib/supabaseClient'
 import SectionWrapper from './SectionWrapper'
 import ModelViewer from './models/ModelViewer'
 
@@ -19,58 +19,72 @@ const models = [
 
 export default function AboutSection() {
   const [selected, setSelected] = useState(models[1].name)
-
   const [displaySkills, setDisplaySkills] = useState<Skill[]>([])
   const [isFading, setIsFading] = useState(false)
   const fadeTimeout = useRef<NodeJS.Timeout | null>(null)
 
-
   useEffect(() => {
     async function fetchSkills() {
+      const selectedModel = models.find((m) => m.name === selected)
+      if (!selectedModel) return
+
       const { data, error } = await supabase
-        .from('skills').select('*')
-        .eq('SkillType', models.find(m => m.name === selected)!.type)
+        .from('skills')
+        .select('*')
+        .eq('SkillType', selectedModel.type)
         .order('SkillStr', { ascending: false })
 
       if (error) {
         console.error(error)
-      } else {
-        setIsFading(true)
+        return
+      }
+
+      setIsFading(true)
+
+      if (fadeTimeout.current) {
         clearTimeout(fadeTimeout.current)
-        fadeTimeout.current = setTimeout(() => {
-          setDisplaySkills(data)
-          setIsFading(false)
-        }, 500)
+      }
+
+      fadeTimeout.current = setTimeout(() => {
+        setDisplaySkills(data || [])
+        setIsFading(false)
+      }, 500)
+    }
+
+    fetchSkills()
+
+    return () => {
+      if (fadeTimeout.current) {
+        clearTimeout(fadeTimeout.current)
       }
     }
-    fetchSkills()
-    return () => clearTimeout(fadeTimeout.current)
   }, [selected])
 
   return (
     <SectionWrapper id="about" bgVariant="parchment">
-      <h2 className="text-6xl font-bold mb-8 text-parchment text-center">Explore My <span className="relative inline-block font-extrabold highlight-name z-1">
-           Skills
-          </span></h2>
+      <h2 className="text-6xl font-bold mb-8 text-parchment text-center">
+        Explore My{' '}
+        <span className="relative inline-block font-extrabold highlight-name z-1">
+          Skills
+        </span>
+      </h2>
 
       <div className="flex flex-col md:flex-row gap-6 w-full justify-center items-center mb-12">
-
-<div className="flex flex-col md:flex-row gap-52 w-full justify-center items-center mb-12">
-  {models.map((model) => (
-    <div key={model.name} className="flex flex-col items-center">
-      <span className="mt-2 text-lg font-semibold text-parchment dark:text-parchment">
-        {model.name}
-      </span>
-      <ModelViewer
-        name={model.name}
-        path={model.path}
-        selected={selected === model.name}
-        onSelect={() => setSelected(model.name)}
-      />
-    </div>
-  ))}
-</div>
-
+        <div className="flex flex-col md:flex-row gap-52 w-full justify-center items-center mb-12">
+          {models.map((model) => (
+            <div key={model.name} className="flex flex-col items-center">
+              <span className="mt-2 text-lg font-semibold text-parchment dark:text-parchment">
+                {model.name}
+              </span>
+              <ModelViewer
+                name={model.name}
+                path={model.path}
+                selected={selected === model.name}
+                onSelect={() => setSelected(model.name)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Skill rings */}
@@ -80,9 +94,8 @@ export default function AboutSection() {
         }`}
       >
         {displaySkills.map((skill) => {
-
           let shadowColor = ''
-          if(skill.SkillStr>=5) shadowColor = 'drop-shadow-[0_0_7px_#aa4444]'
+          if (skill.SkillStr >= 5) shadowColor = 'drop-shadow-[0_0_7px_#aa4444]'
 
           let strokeColor = 'stroke-fuchsia-200'
           if (skill.SkillStr >= 5) strokeColor = 'stroke-rose-500'
@@ -95,7 +108,7 @@ export default function AboutSection() {
               key={skill.SkillName}
               className="flex flex-col items-center justify-center bg-parchment dark:bg-muted w-full sm:w-1/2 md:w-1/5 p-4 rounded-lg overflow-hidden"
             >
-              <svg className={`w-28 h-28 mb-4 ${shadowColor} `} viewBox="0 0 36 36">
+              <svg className={`w-28 h-28 mb-4 ${shadowColor}`} viewBox="0 0 36 36">
                 <path
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831
                      a 15.9155 15.9155 0 0 1 0 -31.831"
