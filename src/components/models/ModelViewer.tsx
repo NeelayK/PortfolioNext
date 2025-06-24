@@ -59,18 +59,23 @@ export default function ModelViewer({ name, path, selected, onSelect }: Props) {
   />
 </Suspense>
 
-        <EffectComposer>
-          <Bloom
-            intensity={selected ? 2.5 : 1.5}
-            luminanceThreshold={0.3}
-            luminanceSmoothing={0.9}
-            kernelSize={KernelSize.LARGE}
-          />
-          <Noise opacity={selected ? 0.2 : 0.02} />
-          <Scanline density={selected ? 1.25 : 1.0} />
-          <ChromaticAberration offset={[0.0005, 0.002]} />
-          <Glitch delay={[2, 5]} duration={[0.3, 0.7]} strength={[0.2, 0.5]} />
-        </EffectComposer>
+<EffectComposer>
+  <Bloom
+    intensity={selected ? 2.5 : 1.5}
+    luminanceThreshold={0.3}
+    luminanceSmoothing={0.9}
+    kernelSize={KernelSize.LARGE}
+  />
+  <Noise opacity={selected ? 0.2 : 0.02} />
+  <Scanline density={selected ? 1.25 : 1.0} />
+  <ChromaticAberration offset={new Vector2(0.0005, 0.002)} />
+  <Glitch
+    delay={new Vector2(2, 5)}
+    duration={new Vector2(0.3, 0.7)}
+    strength={new Vector2(0.2, 0.5)}
+  />
+</EffectComposer>
+
       </Canvas>
     </div>
   )
