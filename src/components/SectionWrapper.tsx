@@ -36,7 +36,7 @@ export default function SectionWrapper({
       id={id}
       className={`${bgClass} ${textClass} w-full transition-colors duration-300 ${className}`}
     >
-      <div className="w-full pt-20 pb-20">{children}</div>
+      <div className="w-full pt-20 pb-20 overflow-x-hidden">{children}</div>
     </section>
   )
 }
