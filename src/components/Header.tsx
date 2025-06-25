@@ -23,7 +23,7 @@ export default function Header() {
         hidden ? '-translate-y-full' : 'translate-y-0'
       }`}
     >
-      <div className="max-w-8xl mx-auto flex justify-between items-center py-8 px-6 md:px-12">
+      <div className="w-full max-w-screen-xl mx-auto flex justify-between items-center py-8 px-4 sm:px-6 md:px-12">
         <a
           href="#hero"
           className="text-xl font-bold text-default dark:text-parchment cursor-none"
