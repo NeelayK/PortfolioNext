@@ -30,7 +30,7 @@ export default function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className="pointer-events-none fixed z-[9999] w-6 h-6 rounded-full border border-white mix-blend-difference bg-white/10 backdrop-blur transition-transform duration-200"
+      className="hidden sm:block pointer-events-none fixed z-[9999] w-6 h-6 rounded-full border border-white mix-blend-difference bg-white/10 backdrop-blur transition-transform duration-200"
       style={{ transform: 'translate(-50%, -50%)' }}
     />
   )
