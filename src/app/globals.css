@@ -3,11 +3,11 @@
 html {
   scroll-behavior: smooth;
   overscroll-behavior-x: none;
+  cursor: none !important;
 }
 
 body {
   overflow-x: hidden;
-  cursor: none !important;
 }
 
 
