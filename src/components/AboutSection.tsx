@@ -69,8 +69,8 @@ export default function AboutSection() {
         </span>
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-6 w-full justify-center items-center mb-12">
-        <div className="flex flex-col md:flex-row gap-52 w-full justify-center items-center mb-12">
+      <div className="flex md:flex-row gap-6 w-full justify-center items-center mb-12">
+        <div className="flex md:flex-row gap-52 w-full justify-center items-center mb-12">
           {models.map((model) => (
             <div key={model.name} className="flex flex-col items-center">
               <span className="mt-2 text-lg font-semibold text-parchment dark:text-parchment">
