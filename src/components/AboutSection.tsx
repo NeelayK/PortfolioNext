@@ -70,7 +70,7 @@ export default function AboutSection() {
       </h2>
 
       <div className="flex md:flex-row gap-6 w-full justify-center items-center mb-12">
-        <div className="flex md:flex-row gap-52 w-full justify-center items-center mb-12">
+        <div className="flex flex-col md:flex-row gap-52 w-full justify-center items-center mb-12">
           {models.map((model) => (
             <div key={model.name} className="flex flex-col items-center">
               <span className="mt-2 text-lg font-semibold text-parchment dark:text-parchment">
@@ -104,7 +104,7 @@ export default function AboutSection() {
           return (
             <div
               key={skill.SkillName}
-              className="flex flex-col items-center justify-center bg-parchment dark:bg-muted w-full sm:w-1/2 md:w-1/5 p-4 rounded-lg overflow-hidden"
+              className="flex flex-col items-center justify-center bg-parchment dark:bg-muted sm:w-1/2 md:w-1/5 p-4 rounded-lg overflow-hidden"
             >
               <svg className={`w-28 h-28 mb-4 ${shadowColor}`} viewBox="0 0 36 36">
                 <path
