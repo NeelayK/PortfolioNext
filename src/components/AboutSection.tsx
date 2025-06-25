@@ -69,28 +69,25 @@ export default function AboutSection() {
         </span>
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-6 w-full justify-center items-center mb-12">
-        <div className="flex flex-col md:flex-row gap-52 w-full justify-center items-center mb-12">
-          {models.map((model) => (
-            <div key={model.name} className="flex flex-col items-center">
-              <span className="mt-2 text-lg font-semibold text-parchment dark:text-parchment">
-                {model.name}
-              </span>
-              <ModelViewer
-                name={model.name}
-                path={model.path}
-                selected={selected === model.name}
-                onSelect={() => setSelected(model.name)}
-              />
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-3 gap-4 md:flex md:flex-row md:gap-52 w-full justify-center items-center mb-12">
+        {models.map((model) => (
+          <div key={model.name} className="flex flex-col items-center w-full">
+            <span className="mt-2 text-lg font-semibold text-parchment dark:text-parchment">
+              {model.name}
+            </span>
+            <ModelViewer
+              name={model.name}
+              path={model.path}
+              selected={selected === model.name}
+              onSelect={() => setSelected(model.name)}
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Skill rings */}
       <div
-        className={`w-full flex flex-wrap justify-center gap-8 py-8 skill-container ${
-          isFading ? 'fade-out' : ''
+        className={`w-full grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 py-8 skill-container transition-opacity duration-300 ${
+          isFading ? 'opacity-0' : 'opacity-100'
         }`}
       >
         {displaySkills.map((skill) => {
@@ -106,7 +103,7 @@ export default function AboutSection() {
           return (
             <div
               key={skill.SkillName}
-              className="flex flex-col items-center justify-center bg-parchment dark:bg-muted w-full sm:w-1/2 md:w-1/5 p-4 rounded-lg overflow-hidden"
+              className="flex flex-col items-center justify-center bg-parchment dark:bg-muted w-full p-4 rounded-lg overflow-hidden"
             >
               <svg className={`w-28 h-28 mb-4 ${shadowColor}`} viewBox="0 0 36 36">
                 <path
