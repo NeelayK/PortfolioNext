@@ -1,5 +1,5 @@
 // src/components/Footer.tsx
-import { Instagram, Linkedin, Mail } from 'lucide-react'
+import { Instagram, Linkedin, Mail, Codepen, Github } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -34,6 +34,27 @@ export default function Footer() {
           >
             <Instagram className="w-6 h-6 text-default group-hover:text-highlight dark:group-hover:text-highlight transition-colors duration-300" />
           </a>
+
+          <a
+            href="https://codepen.io/Neelay-Kamat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group transition-transform duration-300 hover:scale-110"
+            aria-label="CodePen"
+          >
+            <Codepen className="w-6 h-6 text-default group-hover:text-highlight dark:group-hover:text-highlight transition-colors duration-300" />
+          </a>
+
+                    <a
+            href="https://github.com/NeelayK"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group transition-transform duration-300 hover:scale-110"
+            aria-label="Github"
+          >
+            <Github className="w-6 h-6 text-default group-hover:text-highlight dark:group-hover:text-highlight transition-colors duration-300" />
+          </a>
+          
         </div>
       </div>
     </footer>
